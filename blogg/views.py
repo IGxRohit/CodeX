@@ -129,7 +129,7 @@ def loginto(request):
              messages.success(request, "Login Sucessfully done..!")
         
          else:
-             messages.warning(request, "PLease Enter vaild Crentationals! ")
+             messages.warning(request, "PLease Enter vaild Crentationals!.... ")
 
        return render(request, "login.html")
 def logouthere(request):

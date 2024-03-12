@@ -1,0 +1,28 @@
+{% extends "navbarandfooter.html" %}
+
+{% block update %}
+
+<form action="/update-this-data/{{upd.id}}" method="POST" style="margin-bottom:300px;">
+<div style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+    <div style="margin-left: 50px;margin-right: 50px;">
+        <h2 style="padding-bottom: 50px;"><span style="color: red;"><center>Update Records</center></span></h2>
+            {% csrf_token %}
+            <label for="username"><h3>Name</h3></label>
+            <input type="text"id="name"value="{{upd.username}}" name="name" placeholder="Your name.." style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;" required>
+
+            <label for="email"><h3>Email</h3></label>
+            <input type="email" id="email" value="{{upd.email}}"name="email" placeholder="Your email.." style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;" required>
+
+            <label for="phone"><h3>Phone Number</h3></label>
+            <input type="tel" id="phone"value="{{upd.phone}}" name="phone" placeholder="Your phone number.." style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"min="10" max="10">
+
+            <label for="message"><h3>Message</h3></label>
+            <textarea id="message" name="message" placeholder="Write something.." style="width: 100%; height: 150px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;" required>{{upd.message}}</textarea>
+
+            <input type="submit" value="Update" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+    </div>
+</div>
+
+</form>
+
+{% endblock update %}

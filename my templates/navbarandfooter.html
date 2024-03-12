@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>error 404</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <nav style="background-color: #444; color: #fff; padding: 10px; text-align: center;">
+        <a href="/" style="color: #fff; text-decoration: none; margin: 0 10px;font-weight: bold;">Home</a>
+        <a href="/aboutus" style="color: #fff; text-decoration: none; margin: 0 10px;font-weight: bold;">About</a>
+        <a href="/contactus" style="color: #fff; text-decoration: none; margin: 0 10px;font-weight: bold;">Contact</a>
+        <a href="/services" style="color: #fff; text-decoration: none; margin: 0 10px;font-weight: bold;">Services</a>
+        <a href="/admin" style="color: #b11212; text-decoration: none; margin: 0 10px;font-weight: bold;">ADMIN</a> {% if request.user.is_authenticated %}
+        <a href="/logouthere" style="color: #fff; text-decoration: none; margin: 0 10px;font-weight: bold;">LOgOut</a> {{request.user}} {% else %} <a href="/signup" style="color:blue; text-decoration: none; margin: 0 10px;font-weight: bold;">Sign up</a>
+        <a href="/login" style="color:blue; text-decoration: none; margin: 0 10px;font-weight: bold;">LogIn</a> {% endif %}
+
+        <form class="d-flex" role="search" action="/search">
+            <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </nav>
+
+    {% block home %}{% endblock home %} {% block contactus %}{% endblock contactus %} {% block update %}{% endblock update %} {% block services %}{% endblock services %}{% block signup %}{% endblock signup %}{% block login %}{% endblock login %}
+
+
+
+    <footer style="background-color: #333; color: #fff; text-align: center; padding: 20px; position: fixed; bottom: 0; width: 100%;">
+        <p>&copy; 2024 Your Blog Name. All rights reserved.</p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>

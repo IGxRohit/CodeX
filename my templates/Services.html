@@ -1,0 +1,38 @@
+{% extends "navbarandfooter.html" %} {% block services %}
+
+<div>
+    {% if messages %} {% for x in messages %}
+    <div class="alert alert-{{x.tags}}" role="alert">
+        {{x}}
+    </div>
+    {% endfor %} {% endif %}
+    <div style="text-align: center;color: slategrey; font-size:50px;margin-bottom: 69px;">All Records</div>
+    <div style=" display: flex;
+max-width: 100%;
+min-width: 100%;
+flex-wrap: wrap;">
+        {% for i in record %}
+        <div class="card text-bg-info row-mb-6 " style="max-width: 28rem;margin-left: 50px;">
+            <img src="/media/{{i.myimage}}" alt="image here" style="max-width: 100px;">
+            <div class="card-header">{{i.username}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{i.email}}</h5>
+                <p class="card-text">{{i.message}}</p>
+            </div>
+            <div style="display: flex;align-items: center;">
+                <form action="/deletedata/{{i.id}}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger" style="margin: 20px;">Delete</button>
+                </form>
+                <form action="/updatethis/{{i.id}}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-warning">Update</button>
+                </form>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock services %}
